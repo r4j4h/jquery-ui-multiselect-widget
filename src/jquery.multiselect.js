@@ -440,7 +440,13 @@
       var width = this.element.outerWidth();
       var o = this.options;
 
-      if(/\d/.test(o.minWidth) && width < o.minWidth) {
+
+      if (o.minWidth === "auto")
+        width = o.minWidth;
+      else if ( /\d(%|em)/.test( o.minWidth ) ) {
+        width = o.minWidth;
+      }
+      else if (/\d/.test(o.minWidth) && width < o.minWidth) {
         width = o.minWidth;
       }
 
