@@ -688,7 +688,7 @@
     position: function() {
       var o = this.options;
 
-      // use the position utility if it exists and options are specifified
+      // use the position utility if it exists and options are specified
       if($.ui.position && !$.isEmptyObject(o.position)) {
         o.position.of = o.position.of || this.button;
 
