@@ -44,7 +44,7 @@
       selectOnSpace: false,
       position: {},
       appendTo: "body",
-      menuWidth:null
+      menuWidth: null
     },
 
     _create: function() {
@@ -729,6 +729,10 @@
         case 'minWidth':
           this.options[key] = value;
           this._setButtonWidth();
+          this._setMenuWidth();
+          break;
+        case 'menuWidth':
+          this.options[key] = value;
           this._setMenuWidth();
           break;
         case 'selectedText':
