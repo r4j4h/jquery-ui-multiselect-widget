@@ -751,7 +751,7 @@
           this.refresh();
           break;
         case 'selectOnSpace':
-          this.options.selectOnSpace = !!value;
+          this.options[key] = !!value;
           break;
         case 'position':
           this.position();
