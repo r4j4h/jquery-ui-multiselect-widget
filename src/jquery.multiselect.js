@@ -34,6 +34,7 @@
       checkAllText: 'Check all',
       uncheckAllText: 'Uncheck all',
       noneSelectedText: 'Select options',
+      allSelectedText: 'All selected',
       selectedText: '# selected',
       selectedList: 0,
       closeIcon: 'ui-icon-circle-close',
@@ -42,6 +43,7 @@
       autoOpen: false,
       multiple: true,
       selectOnSpace: false,
+      bShowAllSelectedText: false,
       position: {},
       appendTo: "body",
       menuWidth: null
@@ -217,11 +219,14 @@
       var o = this.options;
       var $inputs = this.inputs;
       var $checked = $inputs.filter(':checked');
+      var numTotal = $inputs.length;
       var numChecked = $checked.length;
       var value;
 
       if(numChecked === 0) {
         value = o.noneSelectedText;
+      } else if ( numChecked === numTotal && o.bShowAllSelectedText ) {
+          value = o.allSelectedText;
       } else {
         if($.isFunction(o.selectedText)) {
           value = o.selectedText.call(this, numChecked, $inputs.length, $checked.get());
@@ -738,6 +743,7 @@
         case 'selectedText':
         case 'selectedList':
         case 'noneSelectedText':
+        case 'allSelectedText':
           this.options[key] = value; // these all needs to update immediately for the update() call
           this.update();
           break;
@@ -751,6 +757,7 @@
           this.refresh();
           break;
         case 'selectOnSpace':
+        case 'bShowAllSelectedText':
           this.options[key] = !!value;
           break;
         case 'position':
